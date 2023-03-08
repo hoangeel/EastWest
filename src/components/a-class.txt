@@ -1,0 +1,126 @@
+"use client"
+container max-w-[1920px] px-[76px] pt-[67px] pb-[79px] mx-auto
+
+background
+    w-full h-full bg-[url('/public/images/Rectangle18.png')] bg-no-repeat bg-[length:100%_100%]
+
+text
+    font-[700] text-[20px] leading-[130%]  text-[#FFFFFF]
+
+boder
+    border-0 border-solid boder-[mau]
+    rounded-[12px]
+
+space
+    space-x-0 > * + *	margin-left: 0px;
+    space-y-0 > * + *	margin-top: 0px;
+
+sm	640px	@media (min-width: 640px) { ... }
+md	768px	@media (min-width: 768px) { ... }
+lg	1024px	@media (min-width: 1024px) { ... }
+xl	1280px	@media (min-width: 1280px) { ... }
+2xl	1536px	@media (min-width: 1536px) { ... }
+
+
+<from className="">
+  <label className='text-[#000000]'>Full Name</label>
+  <input class="effect-1" type="text" placeholder="Placeholder Text"/>
+</from>
+
+
+
+
+header
+{
+  npm install @headlessui/react
+  npm i @heroicons/react
+  import { Disclosure, Menu, Transition } from '@headlessui/react'
+  import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+  const navigation = [
+    { name: 'Contact us on WhatsApp', href: '#', current: true },
+    { name: 'APPLY FOR TRAINING', href: '/apply', current: false },
+    { name: 'Trainings', href: '/trainings', current: false },
+    { name: 'About Us', href: '/about', current: false },
+    ]
+  function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
+  }   
+
+        <div className="max-lg:px-[26px] flex flex-row container px-[40px] mx-auto max-w-[1920px] mt-[20px] " >
+            <Image onClick={() => router.push("./")} className="max-lg:ml-[0px] max-lg:h-[17px] max-lg:w-[100px] w-[162px] h-[28px] mr-auto mt-[13px] ml-[14px] hover:cursor-pointer hover:opacity-70" src={logo} alt=""/>
+            <button className="font-[700] text-[19px] leading-[29px] text-[#FFFFFF] hover:cursor-pointer hover:opacity-70 max-lg:hidden">Contact us on WhatsApp</button>
+            <button className="bg-[#E7D0AD] w-[236px] h-[54px] font-[400] text-[19px] leading-[29px] text-[#FFFFFF] ml-[72px] hover:cursor-pointer hover:opacity-70 max-lg:hidden">APPLY FOR TRAINING</button>
+        </div>
+        <Disclosure >
+        {({ open }) => (
+            <>
+            <div>
+                <div className="lg:hidden text-right pr-[15px] mt-[-30px]">
+                    <Disclosure.Button className=" w-[48px] h-[48px] p-[17px] bg-white hover:cursor-pointer hover:opacity-70">
+                    <span className="sr-only">Open main menu</span>
+                    {open ? (
+                        <XMarkIcon className="w-[15px] h-auto" aria-hidden="true" />
+                    ) : (
+                        <Bars3Icon className="w-[15px] h-auto" aria-hidden="true" />
+                    )}
+                    </Disclosure.Button>
+                </div>
+            </div>
+
+            <Disclosure.Panel className="lg:hidden text-right pr-[15px] bg-black ">
+                <div className="">
+                {navigation.map((item) => (
+                    <Disclosure.Button
+                    key={item.name}
+                    as="a"
+                    href={item.href}
+                    className={classNames(
+                        item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                        'block px-3 py-2 rounded-md text-base font-medium'
+                    )}
+                    aria-current={item.current ? 'page' : undefined}
+                    >
+                    {item.name}
+                    </Disclosure.Button>
+                ))}
+                </div>
+            </Disclosure.Panel>
+            </>
+        )}
+        </Disclosure>
+}
+
+layout
+{
+  import Header from './header'
+  import Footer from './footer'
+
+  const Layout = ({children }) => {
+      return (
+          <div className='layout'>
+              <Header />
+              <div className='contentPage'>
+                  {children}
+              </div>
+              <Footer />
+          </div>
+      )
+  }
+
+  export default Layout
+}
+RootLayout
+{
+  <html lang="en">
+    <head>
+      <link rel="preconnect" href="https://fonts.googleapis.com"/>
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+      <link href="https://fonts.googleapis.com/css2?family=Aguafina+Script&family=Akronim&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"/>
+    </head>
+    <body>
+      <Layout>
+        {children}
+      </Layout>
+    </body>
+  </html>
+}
